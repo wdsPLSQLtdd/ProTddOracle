@@ -1,4 +1,4 @@
-# wdsPLSQLtdd - Testes Automatizados em PL/SQL
+# wdsPLSQLtdd - Testes Unitários Automatizados em PL/SQL (TDD)
 
 **FEITO EM PL/SQL PARA PL/SQL**
 
