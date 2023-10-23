@@ -739,13 +739,15 @@ Para realizar a ativação da coleta do TRACE é simples, você precisar realiza
 
 Se você achou este Framework útil e deseja apoiar seu desenvolvimento contínuo, você pode fazer uma contribuição financeira. Suas contribuições são bem-vindas e ajudam a manter este projeto ativo.
 
-Crypto
+**Crypto**
 
 Bitcoin >> bc1qk8uextsv83gwz9ups9k7ejfj35zenfa96rjnxs
 
 Ethereum - BNB - MATIC >> 0x74d6b623e488e76ea522915edf2c9bcaeebff190
 
-Pix email >> wdsplsqltdd@gmail.com
+**Pix**
+
+Chave >> 7b9c9a6a-a4be-4caa-bcf3-2c760aac9d94
 
 Banco Inter - Wesley David Santos
 
