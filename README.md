@@ -12,6 +12,10 @@ Existe uma diferença significativa entre um sistema adaptado e um sistema dedic
 
 Ao contrário de outras soluções que envolvem o uso de linguagens de programação adicionais, como o jUnit que utiliza o Java, o wdsPLSQLtdd permite que os desenvolvedores PL/SQL criem testes de forma direta, eliminando a necessidade de aprender uma nova linguagem e reduzindo significativamente a curva de aprendizado.
 
+## Tutorial em Vídeo
+
+[![wdsPLSQLtdd - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "wdsPLSQLtdd - Tutorial")
+
 ## Problema a Ser Resolvido
 
 Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade de criar testes de unidade para suas Procedures, Functions e Packages. No entanto, a maioria das soluções disponíveis envolve o uso de linguagens de programação adicionais, o que pode ser complexo e demorado. O wdsPLSQLtdd busca resolver esse problema, permitindo que os testes sejam escritos diretamente em PL/SQL, tornando o processo mais simples e eficiente.
@@ -726,6 +730,28 @@ Para realizar a ativação da coleta do TRACE é simples, você precisar realiza
    SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.DESATIVAR_TRACE( TESTE_ID ) FROM DUAL;
 
 ```
+
+## Exemplos de Testes - Vídeo
+
+[![wdsPLSQLtdd - Exemplos de Testes](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "wdsPLSQLtdd - Exemplos de Testes")
+
+## Contribuições Financeiras (Opcional)
+
+Se você achou este Framework útil e deseja apoiar seu desenvolvimento contínuo, você pode fazer uma contribuição financeira. Suas contribuições são bem-vindas e ajudam a manter este projeto ativo.
+
+Crypto
+
+Bitcoin >> bc1qk8uextsv83gwz9ups9k7ejfj35zenfa96rjnxs
+
+Ethereum - BNB - MATIC >> 0x74d6b623e488e76ea522915edf2c9bcaeebff190
+
+Pix email >> wdsplsqltdd@gmail.com
+
+Banco Inter - Wesley David Santos
+
+Lembre-se de que as contribuições financeiras são completamente opcionais e não são de forma alguma um requisito para o uso ou o suporte deste projeto. Qualquer ajuda, seja através de código, relatórios de problemas, ou simplesmente compartilhando sua experiência, é altamente valorizada.
+
+Obrigado por fazer parte da comunidade PL/SQL e por considerar apoiar este projeto!
 
 ## Licença
 
