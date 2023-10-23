@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="09ac53ea-018b-1000-800d-c0a873f49b79" type="" style="Table" enable="true">
+	<name><![CDATA[Ultimo Teste Realizado - Com Falha]]></name>
+	<description><![CDATA[Apresenta os ultimos testes realizados com falha de cada TESTE Ativo]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<TYPE><![CDATA[horizontal]]></TYPE>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[SELECT
+     TESTE
+    ,DATA_TESTE
+    ,TESTE_ID
+    ,CODIGO
+    ,ID_EXECUCAO
+    ,NOME_TESTE
+    ,ALVO
+    ,CASE
+        WHEN TRACE IS NULL THEN ' --'
+        ELSE TRACE
+     END TRACE
+    ,SITUACAO
+    ,CASE
+        WHEN SITUACAO_TESTES_ANTES_DEPOIS > 0 THEN
+            'FALHA ' || SITUACAO_TESTES_ANTES_DEPOIS || ' TESTE'
+        ELSE
+            'SUCESSSO' 
+     END SITUACAO_TESTES_ANTES_DEPOIS 
+FROM
+    (
+            SELECT
+                 CASE
+                    WHEN T.ATIVADO = 'Y' THEN 'ATIVADO'
+                    ELSE 'DESATIVADO'
+                 END TESTE
+                ,( SELECT DATA_INICIO FROM HISTORICO_EXECUCAO_TESTES WHERE ID = HISTORICO_TESTE.ID ) DATA_TESTE
+                ,T.ID TESTE_ID
+                ,( SELECT CODIGO FROM HISTORICO_EXECUCAO_TESTES WHERE ID = HISTORICO_TESTE.ID ) CODIGO
+                ,HISTORICO_TESTE.ID_EXECUCAO
+                ,T.NOME NOME_TESTE
+                ,( A.OWNER || '.' || A.OBJECT_NAME ) ALVO
+                ,(
+                    SELECT
+                        SITUACAO
+                    FROM
+                        TRACE_METADADOS
+                    WHERE
+                        ID_EXECUCAO = HISTORICO_TESTE.ID_EXECUCAO   
+                 ) TRACE
+                ,(
+                    SELECT
+                        CASE
+                            WHEN QTD_TESTE_FALHA > 0 OR QTD_TESTE_RAISE_ERRO > 0 THEN
+                                'FALHA'
+                            ELSE
+                                'SUCESSO'
+                        END SITUACAO
+                    FROM
+                        HISTORICO_EXECUCAO_TESTES
+                    WHERE
+                        ID = HISTORICO_TESTE.ID
+                        
+                 ) SITUACAO
+                ,(
+                    SELECT
+                         COUNT(1) QTD_FALHA
+                    FROM
+                        HISTORICO_EXECUCAO_TESTES
+                    WHERE
+                        ID_EXECUCAO = HISTORICO_TESTE.ID_EXECUCAO
+                        AND TIPO_TESTE != 'TESTE'
+                        AND ( QTD_TESTE_FALHA > 0 OR QTD_TESTE_RAISE_ERRO > 0 )
+                 ) SITUACAO_TESTES_ANTES_DEPOIS
+            FROM
+                ALVO A
+                INNER JOIN TESTE T ON T.FK_ALVO_ID = A.ID
+                INNER JOIN HISTORICO_EXECUCAO_TESTES HISTORICO_TESTE ON HISTORICO_TESTE.FK_TESTE_ID = T.ID
+            WHERE
+                T.AUXILIAR = 'N'
+                AND HISTORICO_TESTE.ID IN ( 
+                                                SELECT 
+                                                    TESTES_FALHA.ID
+                                                FROM
+                                                    HISTORICO_EXECUCAO_TESTES TESTES_FALHA
+                                                    INNER JOIN 
+                                                        (
+                                                            SELECT 
+                                                                 MAX( ID ) ID
+                                                            FROM
+                                                                HISTORICO_EXECUCAO_TESTES 
+                                                            WHERE
+                                                                TIPO_TESTE = 'TESTE'
+                                                            GROUP BY
+                                                                FK_TESTE_ID
+                                                                
+                                                        ) ULTIMOS_TESTES ON ULTIMOS_TESTES.ID = TESTES_FALHA.ID
+                                                WHERE
+                                                    TIPO_TESTE = 'TESTE'
+                                                    AND (
+                                                            QTD_TESTE_FALHA > 0
+                                                            OR QTD_TESTE_RAISE_ERRO > 0
+                                                        )
+                                            )
+                                        
+    )                                    
+ORDER BY
+    SITUACAO ASC, DATA_TESTE DESC]]></sql>
+	</query>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Teste Detalhes]]></name>
+		<description><![CDATA[Apresenta informações sobre o teste realizado]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+     FK_TESTE_ID TESTE_ID
+    ,DATA_INICIO DATA_TESTE
+    ,QTD_TOTAL_TESTE QTD_TESTES_EXISTENTES
+    ,QTD_TESTE_REALIZADO
+    ,QTD_TESTE_SUCESSO
+    ,QTD_TESTE_FALHA
+    ,QTD_TESTE_RAISE_ERRO
+    ,(
+        SELECT
+            TO_CHAR( AVG( TEMPO_EXECUCAO ), '0.00000000' )
+        FROM
+            TEMPO_EXECUCAO_TESTE
+        WHERE
+            CODIGO = H.CODIGO
+     ) TEMPO_MEDIO_EXECUCAO
+FROM
+    HISTORICO_EXECUCAO_TESTES H
+WHERE
+    ID = (
+            SELECT
+                 MAX( ID )
+            FROM
+                HISTORICO_EXECUCAO_TESTES
+            WHERE
+                FK_TESTE_ID = :TESTE_ID
+         )]]></sql>
+			<binds>
+				<bind id="TESTE_ID">
+					<prompt><![CDATA[TESTE_ID]]></prompt>
+					<tooltip><![CDATA[TESTE_ID]]></tooltip>
+					<value><![CDATA[NULL_VALUE]]></value>
+					<bracket><![CDATA[null]]></bracket>
+				</bind>
+			</binds>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Tempos de Execução]]></name>
+		<description><![CDATA[Apresenta os tempos de execução do teste]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+     SITUACAO
+    ,ID_EXECUCAO
+    ,CODIGO
+    ,ID TEMPO_EXECUCAO_ID
+    ,TEMPO_EXECUCAO
+    ,(
+        SELECT
+            ( QUERY_ARGUMENTO || ' WHERE ROWID = ''' || TE.ROWID_ARGUMENTO || ''';' ) PARAMETRO_USADO
+        FROM
+            TESTE
+        WHERE
+            ID = TE.FK_TESTE_ID
+            AND TE.ROWID_ARGUMENTO != 'SEM_ROWID'
+     ) PARAMETRO_USADO        
+FROM
+    TEMPO_EXECUCAO_TESTE TE
+WHERE    
+    ID_EXECUCAO = :ID_EXECUCAO
+    AND FK_TESTE_ID = :TESTE_ID
+ORDER BY ID DESC]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Ultimo Teste Sucesso]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT  
+     SUC_H.ID HISTORICO_ID
+    ,TO_CHAR( SUC_H.DATA_INICIO, 'DD/MM/YYYY HH24:MI:SS' ) DATA_TESTE_SUCESSO
+    ,SUC_H.QTD_TOTAL_TESTE
+    ,SUC_H.QTD_TESTE_REALIZADO
+    ,SUC_H.QTD_TESTE_SUCESSO
+    ,SUC_H.QTD_TESTE_FALHA
+    ,SUC_H.QTD_TESTE_RAISE_ERRO
+    ,(
+        SELECT
+            TO_CHAR( AVG( TEMPO_EXECUCAO ), '0.00000000' ) TEMPO_MEDIO
+        FROM
+            TEMPO_EXECUCAO_TESTE
+        WHERE
+            CODIGO = SUC_H.CODIGO
+      ) TEMPO_MEDIO_TESTE
+FROM
+    (
+        SELECT
+            MAX( ID ) ID
+        FROM
+            HISTORICO_EXECUCAO_TESTES
+        WHERE
+            FK_TESTE_ID = :TESTE_ID
+            AND QTD_TESTE_FALHA = 0
+            AND QTD_TESTE_RAISE_ERRO = 0
+            
+    ) HISTORICO_TESTE_SUCESSO
+    INNER JOIN HISTORICO_EXECUCAO_TESTES SUC_H ON HISTORICO_TESTE_SUCESSO.ID = SUC_H.ID]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Teste - Raise Erro]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT ID_EXECUCAO, CODIGO, MSG FROM LOG_RAISE_ERRO_EXECUCAO_TESTE WHERE ID_EXECUCAO = :ID_EXECUCAO]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Ler Trace]]></name>
+		<description><![CDATA[Apresenta a query para leitura do Trace]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    CONTEUDO
+FROM
+    TRACE
+WHERE
+    FK_TESTE_ID = :TESTE_ID
+    AND ID_EXECUCAO = :ID_EXECUCAO
+ORDER BY
+    ID ASC]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Alvo Alterado]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+     DATA_ALTERACAO
+    ,(
+        FLOOR(TEMPO_ALTERADO_ANTES_TESTE / 86400) || ' Dias ' || 
+        FLOOR(MOD(TEMPO_ALTERADO_ANTES_TESTE, 86400) / 3600) || 'h ' || 
+        TO_CHAR(FLOOR(MOD(MOD(TEMPO_ALTERADO_ANTES_TESTE, 86400), 3600) / 60), 'FM990') || 'm ' || 
+        TO_CHAR(MOD(MOD(MOD(TEMPO_ALTERADO_ANTES_TESTE, 86400), 3600), 60), 'FM990') || 's'
+     ) TEMPO_ALTERADO_ANTES_TESTE
+    ,OBJETO
+    ,OBJECT_TYPE
+    ,EVENTO
+    ,TERMINAL
+    ,CURRENT_USER
+    ,SESSION_USER
+    ,HOST
+    ,OS_USER
+    ,'----' IP_ADDRESS
+FROM
+    (
+
+        SELECT
+             TO_CHAR( DATA_REGISTRO, 'DD/MM/YYYY HH24:MI:SS' ) DATA_ALTERACAO
+            ,( ( :DATA_TESTE - DATA_REGISTRO ) * 24 * 60 * 60 ) TEMPO_ALTERADO_ANTES_TESTE
+            ,( OWNER || '.' || OBJECT_NAME ) OBJETO
+            ,OBJECT_TYPE
+            ,EVENTO
+            ,TERMINAL
+            ,CURRENT_USER
+            ,SESSION_USER
+            ,HOST
+            ,OS_USER
+            ,'----' IP_ADDRESS
+        FROM
+            DISPARAR_TESTES_TDD OBJ_ALTERADO
+            INNER JOIN (
+                            SELECT
+                                MAX( OBJ.ID ) ID
+                            FROM
+                                ALVO ALVO
+                                INNER JOIN DISPARAR_TESTES_TDD OBJ ON OBJ.OWNER = ALVO.OWNER AND OBJ.OBJECT_NAME = ALVO.OBJECT_NAME
+                            WHERE
+                                ( ALVO.OWNER || '.' || ALVO.OBJECT_NAME ) = :ALVO
+                                
+                        ) OBJ ON OBJ.ID = OBJ_ALTERADO.ID
+        WHERE
+            DATA_REGISTRO <= :DATA_TESTE
+    )]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Antes_Depois]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+     CASE
+        WHEN ( H.QTD_TESTE_FALHA + H.QTD_TESTE_RAISE_ERRO ) > 0 THEN
+            'FALHA'
+        ELSE
+            'SUCESSO'
+     END SITUACAO        
+    ,TIPO_TESTE
+    ,T.ASSERCAO ASSERCAO
+    ,T.NOME NOME_TESTE
+    ,H.DATA_INICIO
+    ,H.QTD_TOTAL_TESTE
+    ,H.QTD_TESTE_REALIZADO
+    ,H.QTD_TESTE_SUCESSO
+    ,H.QTD_TESTE_FALHA
+    ,H.QTD_TESTE_RAISE_ERRO
+    ,H.ORDEM_EXECUCAO
+FROM
+    HISTORICO_EXECUCAO_TESTES H
+    INNER JOIN TESTE T ON T.ID = H.FK_TESTE_ID
+WHERE
+    H.ID_EXECUCAO = :ID_EXECUCAO
+ORDER BY
+    H.ORDEM_EXECUCAO]]></sql>
+		</query>
+	</display>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Ativar/Desativar Trace - Comando]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+    'Copie e Cole o SELECT ao lado e execute em uma conexão ORACLE  >> ' ACAO_REALIZAR
+    ,CASE    
+        WHEN TRACE_ATIVADO = 'N' THEN
+            'SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.ATIVAR_TRACE( ' || FK_TESTE_ID || ' ) FROM DUAL;'
+        ELSE
+            'SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.DESATIVAR_TRACE( ' || FK_TESTE_ID || ' ) FROM DUAL;'
+     END EXECUTAR_COMANDO
+FROM
+    (   
+        SELECT
+             FK_TESTE_ID
+            ,TRACE_ATIVADO
+        FROM
+            TDD_CAPSULA_PAI
+        WHERE
+            FK_TESTE_ID = :TESTE_ID
+    );]]></sql>
+		</query>
+	</display>
+</display>
+</displays>

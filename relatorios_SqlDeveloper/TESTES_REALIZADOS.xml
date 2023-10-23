@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="02adab3f-018b-1000-801d-c0a873e7a612" type="" style="Chart" enable="true">
+	<name><![CDATA[TESTES_REALIZADOS]]></name>
+	<description><![CDATA[Lista os últimos testes que foram executados]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<PLOT_HGRID_WIDTH><![CDATA[THINNER]]></PLOT_HGRID_WIDTH>
+		<Y1AXIS_SCALE_INCREMENT><![CDATA[10.0]]></Y1AXIS_SCALE_INCREMENT>
+		<Y2AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y2AXIS_SCALE_MAXIMUM>
+		<Y1AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y1AXIS_LINE_WIDTH>
+		<Y1AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y1AXIS_TITLE_ALIGNMENT>
+		<LEGEND_LOCATION><![CDATA[AUTOMATIC]]></LEGEND_LOCATION>
+		<LEGEND_ALIGNMENT><![CDATA[LEFT]]></LEGEND_ALIGNMENT>
+		<XAXIS_LINE_WIDTH><![CDATA[THINNEST]]></XAXIS_LINE_WIDTH>
+		<DATA_MAP_COLUMNS><![CDATA[\,Total Testes,Realizados,Sucesso,Falha,Raise Erro,Em Execução]]></DATA_MAP_COLUMNS>
+		<Y1AXIS_SCALE_MAXIMUM><![CDATA[60.0]]></Y1AXIS_SCALE_MAXIMUM>
+		<XAXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></XAXIS_TITLE_ALIGNMENT>
+		<XAXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></XAXIS_TICK_LABEL_ROTATE>
+		<Y1AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y1AXIS_LOGARITHMIC_BASE>
+		<TYPE><![CDATA[BAR_VERT_CLUST]]></TYPE>
+		<GRID_WIDTH><![CDATA[THINNER]]></GRID_WIDTH>
+		<PLOT_DATALABELS_BAR_POSITION><![CDATA[ABOVE]]></PLOT_DATALABELS_BAR_POSITION>
+		<FOOTNOTE_ALIGNMENT><![CDATA[LEFT]]></FOOTNOTE_ALIGNMENT>
+		<XAXIS_TICK_LABEL_SKIP_MODE><![CDATA[AUTOMATIC]]></XAXIS_TICK_LABEL_SKIP_MODE>
+		<DATA_MAP_COLNAMES><![CDATA[\,"FALHA","RAISE_ERRO","REALIZADO","SUCESSO","TESTES_EM_EXECUCAO","TOTAL_TESTES"]]></DATA_MAP_COLNAMES>
+		<DATA_MAP_SERIES><![CDATA[\,Total Testes,Realizados,Sucesso,Falha,Raise Erro,Em Execução]]></DATA_MAP_SERIES>
+		<Y2AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y2AXIS_LOGARITHMIC_BASE>
+		<DATA_MAP_COUNT><![CDATA[6]]></DATA_MAP_COUNT>
+		<STYLE><![CDATA[Default]]></STYLE>
+		<TITLE_ALIGNMENT><![CDATA[LEFT]]></TITLE_ALIGNMENT>
+		<Y2AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y2AXIS_TICK_LABEL_ROTATE>
+		<Y2AXIS_SCALE_MINIMUM><![CDATA[10.0]]></Y2AXIS_SCALE_MINIMUM>
+		<Y2AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y2AXIS_LINE_WIDTH>
+		<DATA_MAP_VALUES><![CDATA[\,"TOTAL_TESTES","REALIZADO","SUCESSO","FALHA","RAISE_ERRO","TESTES_EM_EXECUCAO"]]></DATA_MAP_VALUES>
+		<Y1AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y1AXIS_TICK_LABEL_ROTATE>
+		<Y2AXIS_SCALE_INCREMENT><![CDATA[20.0]]></Y2AXIS_SCALE_INCREMENT>
+		<PLOT_VGRID_WIDTH><![CDATA[THINNER]]></PLOT_VGRID_WIDTH>
+		<Y2AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y2AXIS_TITLE_ALIGNMENT>
+		<SUBTITLE_ALIGNMENT><![CDATA[LEFT]]></SUBTITLE_ALIGNMENT>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[SELECT
+     (  
+        SELECT
+            CASE
+                WHEN EM_EXECUCAO > 0 THEN
+                    -- EM_EXECUCAO é somado com o TOTAL_TESTES para que o gráfico em execução se destaque em relação a quantidade informada nos demais gráficos
+                    ( EM_EXECUCAO + TOTAL_TESTES )
+                ELSE
+                    0
+            END TESTES_EM_EXECUCAO
+        FROM
+            (       
+                SELECT COUNT(*) EM_EXECUCAO FROM TESTE_EM_EXECUCAO
+            )
+     ) TESTES_EM_EXECUCAO
+    ,TOTAL_TESTES
+    ,REALIZADO
+    ,SUCESSO
+    ,FALHA
+    ,RAISE_ERRO
+FROM
+    (
+
+        SELECT
+             SUM( QTD_TOTAL_TESTE ) TOTAL_TESTES
+            ,SUM( QTD_TESTE_REALIZADO ) REALIZADO
+            ,SUM( QTD_TESTE_SUCESSO ) SUCESSO
+            ,SUM( QTD_TESTE_FALHA ) FALHA
+            ,SUM( QTD_TESTE_RAISE_ERRO ) RAISE_ERRO
+        FROM
+            HISTORICO_EXECUCAO_TESTES TESTES_FALHA
+            INNER JOIN 
+                (
+                    SELECT 
+                         MAX( ID ) ID
+                    FROM
+                        HISTORICO_EXECUCAO_TESTES 
+                    WHERE
+                        TIPO_TESTE = 'TESTE'
+                    GROUP BY
+                        FK_TESTE_ID
+                        
+                ) ULTIMOS_TESTES ON ULTIMOS_TESTES.ID = TESTES_FALHA.ID
+                
+    )]]></sql>
+	</query>
+	<display id="" type="" style="Table" enable="true">
+		<name><![CDATA[Testes em Execução]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT
+     NOME_TESTE
+    ,ASSERCAO
+    ,DATA_INICIO
+    ,( trunc((TEMPO / 60 / 60 / 24 )) || 'dias:' || trunc(mod((TEMPO / 60 / 60 ),24)) || 'h:' || trunc(mod((TEMPO / 60), 60)) || 'mim:' || trunc(mod((TEMPO), 60)) || 's' ) TEMPO_EM_EXECUCAO
+FROM
+    (
+        SELECT
+             T.NOME NOME_TESTE
+            ,T.ASSERCAO ASSERCAO
+            ,EXEC.DATA_INICIO
+            ,( ROUND( TRUNC( ( SYSDATE - EXEC.DATA_INICIO ), 10 ) * 24 * 60 * 60 ) ) TEMPO
+        FROM
+            TESTE T
+            INNER JOIN TESTE_EM_EXECUCAO EXEC ON EXEC.FK_TESTE_ID = T.ID
+    )]]></sql>
+		</query>
+	</display>
+</display>
+</displays>
