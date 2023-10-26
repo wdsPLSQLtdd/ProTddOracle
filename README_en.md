@@ -12,6 +12,9 @@ There is a significant difference between an adapted system and a dedicated one,
 
 Unlike other solutions that involve the use of additional programming languages, such as jUnit which uses Java, wdsPLSQLtdd allows PL/SQL developers to create tests directly, eliminating the need to learn a new language and significantly reducing the learning curve.
 
+## Video tutorial
+
+[![wdsPLSQLtdd - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "wdsPLSQLtdd - Tutorial")
 
 ## Problem to Be Solved
 

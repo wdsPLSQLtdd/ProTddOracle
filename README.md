@@ -12,6 +12,10 @@ Existe uma diferença significativa entre um sistema adaptado e um sistema dedic
 
 Ao contrário de outras soluções que envolvem o uso de linguagens de programação adicionais, como o jUnit que utiliza o Java, o wdsPLSQLtdd permite que os desenvolvedores PL/SQL criem testes de forma direta, eliminando a necessidade de aprender uma nova linguagem e reduzindo significativamente a curva de aprendizado.
 
+## Tutorial em Vídeo
+
+[![wdsPLSQLtdd - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "wdsPLSQLtdd - Tutorial")
+
 ## Problema a Ser Resolvido
 
 Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade de criar testes de unidade para suas Procedures, Functions e Packages. No entanto, a maioria das soluções disponíveis envolve o uso de linguagens de programação adicionais, o que pode ser complexo e demorado. O wdsPLSQLtdd busca resolver esse problema, permitindo que os testes sejam escritos diretamente em PL/SQL, tornando o processo mais simples e eficiente.
