@@ -453,9 +453,6 @@ Our TARGET is an object that performs the SUM of two values.
    {ALVO_OWNER:CALCULATOR}
    {ALVO_OBJECT:ADD}
    */
-
-      v_LOG_REGISTERED NUMBER;
-
    BEGIN
 
       RETURN CALCULATOR.ADD( 2, 3 ) = 5;
@@ -510,9 +507,6 @@ Our TARGET is an object that performs the SUM of two values.
    {ALVO_OBJECT:ADD}
    {QUERY_ARGUMENTO:SELECT VALUE_A, VALUE_B FROM WDS_PLSQL_TDD_TEST.TEST_CALCULATOR}
    */
-
-      v_LOG_REGISTERED NUMBER;
-
    BEGIN
 
       RETURN CALCULATOR.ADD( p_VALUE_A, p_VALUE_B ) = ( p_VALUE_A + p_VALUE_B );

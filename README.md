@@ -466,9 +466,6 @@ Nosso ALVO é um objeto que realiza a SOMA de dois valores.
    {ALVO_OWNER:CALCULADORA}
    {ALVO_OBJECT:SOMA}
    */
-
-      v_LOG_REGISTRADO NUMBER;
-
    BEGIN
 
       RETURN CALCULADORA.SOMA( 2, 3 ) = 5;
@@ -523,9 +520,6 @@ Nosso ALVO é um objeto que realiza a SOMA de dois valores.
    {ALVO_OBJECT:SOMA}
    {QUERY_ARGUMENTO:SELECT VALOR_A, VALOR_B FROM WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA}
    */
-
-      v_LOG_REGISTRADO NUMBER;
-
    BEGIN
 
       RETURN CALCULADORA.SOMA( p_VALOR_A, p_VALOR_B ) = ( p_VALOR_A + p_VALOR_B );
