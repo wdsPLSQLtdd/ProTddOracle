@@ -1,5 +1,9 @@
 # wdsPLSQLtdd - Automated Unit Testing in PL/SQL (TDD)
 
+
+**Readme** - Versão em Português: https://github.com/wdsPLSQLtdd/wdsPLSQLtdd/blob/main/README_ptBR.md
+
+
 **BUILT IN PL/SQL FOR PL/SQL**
 
 wdsPLSQLtdd is an automated testing system developed in PL/SQL, designed to simplify and expedite the process of creating unit tests in the PL/SQL language.
