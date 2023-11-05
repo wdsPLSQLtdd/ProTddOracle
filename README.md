@@ -1,63 +1,63 @@
-# wdsPLSQLtdd - Testes Unitários Automatizados em PL/SQL (TDD)
+# wdsPLSQLtdd - Automated Unit Testing in PL/SQL (TDD)
 
-**FEITO EM PL/SQL PARA PL/SQL**
+**BUILT IN PL/SQL FOR PL/SQL**
 
-O wdsPLSQLtdd é um sistema de testes automatizados desenvolvido em PL/SQL, projetado para simplificar e acelerar o processo de criação de testes de unidade em linguagem PL/SQL.
+wdsPLSQLtdd is an automated testing system developed in PL/SQL, designed to simplify and expedite the process of creating unit tests in the PL/SQL language.
 
-O Banco de Dados Oracle é o líder absoluto em Tecnologia e de Mercado no Brasil e no Mundo.
+Oracle Database is the undisputed leader in technology and market share in Brazil and around the world.
 
-No entanto, a maioria dos sistemas de teste robustos disponíveis para a linguagem PL/SQL não foram originalmente desenvolvidos em PL/SQL. Esses sistemas pertencem a outras linguagens e foram adaptados para a linguagem PL/SQL, em vez de serem dedicados exclusivamente a ela.
+However, most robust testing systems available for the PL/SQL language were not originally developed in PL/SQL. These systems belong to other languages and were adapted to the PL/SQL language rather than being exclusively dedicated to it.
 
-Existe uma diferença significativa entre um sistema adaptado e um sistema dedicado e o wdsPLSQLtdd é dedicado a linguagem PL/SQL.
+There is a significant difference between an adapted system and a dedicated one, and wdsPLSQLtdd is dedicated to the PL/SQL language.
 
-Ao contrário de outras soluções que envolvem o uso de linguagens de programação adicionais, como o jUnit que utiliza o Java, o wdsPLSQLtdd permite que os desenvolvedores PL/SQL criem testes de forma direta, eliminando a necessidade de aprender uma nova linguagem e reduzindo significativamente a curva de aprendizado.
+Unlike other solutions that involve the use of additional programming languages, such as jUnit which uses Java, wdsPLSQLtdd allows PL/SQL developers to create tests directly, eliminating the need to learn a new language and significantly reducing the learning curve.
 
-## Tutorial em Vídeo
+## Video tutorial
 
 [![wdsPLSQLtdd - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "wdsPLSQLtdd - Tutorial")
 
-## Problema a Ser Resolvido
+## Problem to Be Solved
 
-Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade de criar testes de unidade para suas Procedures, Functions e Packages. No entanto, a maioria das soluções disponíveis envolve o uso de linguagens de programação adicionais, o que pode ser complexo e demorado. O wdsPLSQLtdd busca resolver esse problema, permitindo que os testes sejam escritos diretamente em PL/SQL, tornando o processo mais simples e eficiente.
+Often, PL/SQL developers and teams encounter the need to create unit tests for their Procedures, Functions, and Packages. However, most available solutions involve the use of additional programming languages, which can be complex and time-consuming. wdsPLSQLtdd aims to address this issue by allowing tests to be written directly in PL/SQL, simplifying and streamlining the process.
 
-## Principais Recursos para Ambiente de Desenvolvimento
+## Key Development Environment Features
 
-- Crie testes de unidade diretamente em PL/SQL.
-- Execute testes de forma automática.
-- Integração fácil com projetos PL/SQL existentes.
-- Reduza a curva de aprendizado ao eliminar a necessidade de aprender uma nova linguagem de programação.
-- Gere Traces de forma automática.
-- Mantém um histórico de todos os testes já realizados.
-- Mantém um histórico contendo métricas de tempo de execução de cada teste.
-- Permite realizar testes independentes sobre um conjunto de dados.
+- Create unit tests directly in PL/SQL.
+- Automatically execute tests.
+- Easily integrate with existing PL/SQL projects.
+- Reduce the learning curve by eliminating the need to learn a new programming language.
+- Automatically generate traces.
+- Maintain a history of all performed tests.
+- Maintain a history containing runtime metrics for each test.
+- Enable independent testing on a dataset.
 
-## Principais Recursos para Ambiente de Produção
+## Key Production Environment Features
 
-- Monitore ações de DDL realizadas em ambiente de produção.
-- Monitore e teste novas aplicações de scripts de atualização em ambientes de produção.
-- Utilize o sistema para realizar debug e identificar registros que estão apresentando erro em ambiente de produção.
+- Monitor DDL actions performed in a production environment.
+- Monitor and test new update script applications in production environments.
+- Use the system for debugging and identifying records that are encountering errors in a production environment.
 
-Aqui estão os passos para começar a usar o wdsPLSQLtdd em seu projeto:
+Here are the steps to get started using wdsPLSQLtdd in your project:
 
-## Instalação - Criação dos Usuários
+## Installation - User Creation
 
-1. Realize o Download contendo os Scripts do sistema wdsPLSQLtdd.
+1. Download the wdsPLSQLtdd system scripts.
 
-2. Para instalação e uso do sistema wdsPLSQLtdd são necessários a criação de dois usuários.
+2. To install and use the wdsPLSQLtdd system, you need to create two users.
 
-   **CRIANDO O USUÁRIO PRINCIPAL QUE REALIZA O GERENCIAMENTO**
+   **CREATING THE MAIN MANAGEMENT USER**
 
    ```sql
-        -- Usuário Principal que realiza o gerenciamento. Fica a seu critério a definição de senha e tablespace.
+        -- Main user responsible for management. It is up to you to define the password and tablespace.
         CREATE USER WDS_PLSQL_TDD IDENTIFIED BY WDS_PLSQL_TDD;
    ```
 
-   Atribua as permissões necessárias.
+   Assign the necessary permissions.
 
-   Use o usuário SYS.
+   Use the SYS user.
 
    ```sql
-        -- Use o usuário SYS.
+        -- Use the SYS user.
         GRANT CREATE SESSION TO WDS_PLSQL_TDD;
         GRANT UNLIMITED TABLESPACE TO WDS_PLSQL_TDD;
         GRANT DBA TO WDS_PLSQL_TDD;
@@ -81,19 +81,19 @@ Aqui estão os passos para começar a usar o wdsPLSQLtdd em seu projeto:
         GRANT ALTER ANY PROCEDURE TO WDS_PLSQL_TDD;
    ```
 
-   **CRIANDO O USUÁRIO QUE ARMAZENA OS TESTES CRIADOS**
+   **CREATING THE USER FOR STORING CREATED TESTS**
 
    ```sql
-        -- Usuário responsável por armazenar os Testes que serão criados. Fica a seu critério a definição de senha e tablespace.
+        -- User responsible for storing the created tests. It is up to you to define the password and tablespace.
         CREATE USER WDS_PLSQL_TDD_TESTE IDENTIFIED BY WDS_PLSQL_TDD_TESTE;
    ```
 
-   Atribua as permissões necessárias.
+   Assign the necessary permissions.
 
-   Use o usuário SYS.
+   Use the SYS user.
 
    ```sql
-        -- Use o usuário SYS.
+        -- Use the SYS user.
         GRANT CREATE SESSION TO WDS_PLSQL_TDD_TESTE;
         GRANT DBA TO WDS_PLSQL_TDD_TESTE;
         GRANT EXECUTE ANY PROCEDURE TO WDS_PLSQL_TDD_TESTE;
@@ -103,82 +103,81 @@ Aqui estão os passos para começar a usar o wdsPLSQLtdd em seu projeto:
         GRANT INSERT ANY TABLE TO WDS_PLSQL_TDD_TESTE;
    ```
 
-## Instalação - Configurando o Script que realiza a coleta do TRACE
+## Installation - Configuring the TRACE Collection Script
 
-Observação: Até o momento, a coleta de TRACE é realizada somente em ambientes LINUX.
+Note: Currently, TRACE collection is only performed on LINUX environments.
 
-1. Para configurar o processo de coleta do Trace serão necessários a criação de dois diretórios dentro do servidor do banco de dados.
+1. To configure the TRACE collection process, you will need to create two directories on the database server.
 
-2. Fica a seu critério a definição do diretório local onde os outros dois diretórios serão criados, mas segue uma sugestão de diretório.
+2. You can choose the local directory where the other two directories will be created, but here is a suggested directory structure:
 
    ```bash
-     -- Crie o diretório com o usuário ORACLE
+     -- Create the directory with the ORACLE user
 
-     -- Primeiro diretório
+     -- First directory
      mkdir /u01/aplic/wds_plsql_tdd/
 
-
-     -- Segundo diretório. Esse diretório deve ser criado dentro do primeiro diretório
+     -- Second directory. This directory should be created inside the first directory
      mkdir /u01/aplic/wds_plsql_tdd/trace
    ```
 
-3. Realize o Upload do arquivo codificado em Shell Script para o primeiro diretório recém criado por você.
+3. Upload the Shell Script encoded file to the first directory you just created.
 
-   Nome do arquivo: wds_identificar_novo_trace.sh
+   File name: wds_identificar_novo_trace.sh
 
-4. Transforme o arquivo em executável com o comando:
+4. Make the file executable with the following command:
 
 ```bash
     chmod +x wds_identificar_novo_trace.sh
 ```
 
-5. Crie um arquivo em branco com o nome: trace_gerado.wds
+5. Create an empty file named: trace_gerado.wds
 
-   Exemplo: Use o comando: touch trace_gerado.wds
+   For example, use the command: touch trace_gerado.wds
 
 ```bash
    touch trace_gerado.wds
 ```
 
-6. Abra o arquivo wds_identificar_novo_trace.sh e realize a edição das variáveis locais.
+6. Open the file wds_identificar_novo_trace.sh and edit the local variables.
 
-   Dentro do arquivo está descrito quais variáveis devem ser editadas.
+   Inside the file, it is described which variables need to be edited.
 
-7. Execute o arquivo apontando o caminho completo. A execução deste arquivo deve retornar a mensagem ERRO, pois, ainda não foram realizadas coletas de TRACE.
+7. Execute the file by providing the full path. Running this file should return an ERROR message because no TRACE collections have been made yet.
 
-8. Se conecte no banco de dados com o usuário WDS_PLSQL_TDD para que seja realizada a criação dos diretórios, execute o comando abaixo.
+8. Connect to the database with the WDS_PLSQL_TDD user to create the directories. Execute the following command.
 
-   Não se esqueça de informar corretamente o caminho completo dos diretórios que você criou anteriormente.
+   Make sure to correctly specify the full path of the directories you created earlier.
 
    ```sql
-       -- Informe o caminho completo do primeiro diretório definido na parte: Instalação - Configurando o Script que realiza a coleta do TRACE
-       -- Não coloque a barra "/" no final do diretório
+       -- Specify the full path of the first directory defined in the "Installation - Configuring the TRACE Collection Script" section
+       -- Do not include a trailing "/" at the end of the directory
        CREATE DIRECTORY WDS_PLSQL_TDD_SCRIPT AS '/u01/aplic/wds_plsql_tdd';
 
-       -- Informe o caminho completo do segundo diretório definido na parte: Instalação - Configurando o Script que realiza a coleta do TRACE
-       -- Não coloque a barra "/" no final do diretório
+       -- Specify the full path of the second directory defined in the "Installation - Configuring the TRACE Collection Script" section
+       -- Do not include a trailing "/" at the end of the directory
        CREATE DIRECTORY WDS_PLSQL_TDD_TRACE AS '/u01/aplic/wds_plsql_tdd/trace';
    ```
 
-## Instalação - Criação dos objetos referentes ao sistema TDD
+## Installation - Creating TDD System Objects
 
-Observação: O sistema wdsPLSQLtdd foi desenvolvido usando a versão "Oracle Database 19c Release 19.0.0.0.0", se você identificar algum problema referente a versões anteriores, favor entrar em contato.
+Note: The wdsPLSQLtdd system was developed using the "Oracle Database 19c Release 19.0.0.0.0" version. If you encounter any issues with earlier versions, please contact us.
 
-Você pode realizar a instalação Manual ou Automática.
+You can perform either a Manual or Automatic installation.
 
-Na instalação Manual você vai precisar executar 50 arquivos SQL em uma ordem específica para evitar problemas de compilação.
+In the Manual installation, you will need to execute 50 SQL files in a specific order to avoid compilation problems.
 
-Na versão Automática, você vai utilizar um arquivo que realiza a instalação de 47 arquivos e você vai precisar executar manualmente apenas 3 arquivos.
+In the Automatic version, you will use a single file that installs 47 objects, and you will only need to manually execute 3 files.
 
-## Instalação Automática - Criação dos objetos referentes ao sistema TDD
+## Automatic Installation - Creating TDD System Objects
 
-1. Realize o upload da pasta Instalador para a pasta TEMP do seu servidor Oracle.
+1. Upload the "Instalador" folder to the "TEMP" folder of your Oracle server.
 
-   Nome da pasta contendo o instalador: instalador_wds_plsql_tdd
+   Folder name containing the installer: "instalador_wds_plsql_tdd"
 
-2. Atenção, Quando o processo de instalação iniciar, após a criação das tabelas será solicitado que você execute a criação das 3 Views via SQLDeveloper. Só continue a instalação automática após criar as Views.
+2. Important: When the installation process starts, after creating the tables, you will be prompted to execute the creation of the 3 Views via SQLDeveloper. Only continue with the automatic installation after creating the Views.
 
-   Os scripts referentes a criação das Views são:
+   The scripts for creating the Views are:
 
    ```sql
        object/Views/1_VW_CAPSULA_FILHA.sql
@@ -186,43 +185,41 @@ Na versão Automática, você vai utilizar um arquivo que realiza a instalação
        object/Views/3_VW_LISTA_TESTES_INVALIDOS.sql
    ```
 
-3. Se conecte no SQLPlus.
+3. Connect to SQLPlus.
 
-4. Realize a chamada do arquivo de instalação.
+4. Call the installation file.
 
-   Existem dois arquivos de instalação um em Português e outro em Inglês
+   There are two installation files, one in English and one in Portuguese.
 
-   Instalador em inglês: wds_plsql_tdd_instalar_en.sql
+   Installer in English: "wds_plsql_tdd_instalar_en.sql"
 
-   Instalador em português: wds_plsql_tdd_instalar_ptbr.sql
+   Installer in Portuguese: "wds_plsql_tdd_instalar_ptbr.sql"
 
    ```sql
-
         cd instalador_wds_plsql_tdd/
 
-        . oraenv <<< SID_BANCO_DE_DADOS
+        . oraenv <<< SID_DATABASE
 
         sqlplus / as sysdba
 
         @wds_plsql_tdd_instalar_ptbr.sql
 
         exit
-
    ```
 
-## Instalação Manual - Criação dos objetos referentes ao sistema TDD
+## Manual Installation - Creating TDD System Objects
 
-1. Realize o download da pasta Instalador.
+1. Download the "Instalador" folder.
 
-2. Necessário conectar com o usuário WDS_PLSQL_TDD
+2. Connect with the WDS_PLSQL_TDD user.
 
-3. Os scripts podem ser executados via SQLPlus ou SQLDeveloper
+3. The scripts can be executed via SQLPlus or SQLDeveloper.
 
-4. Execute os scripts na ordem definida abaixo.
+4. Execute the scripts in the order defined below.
 
    ```sql
        --
-       -- Criação tabelas
+       -- Table Creation
 
        1_ALVO.sql
        2_TESTE.sql
@@ -243,53 +240,46 @@ Na versão Automática, você vai utilizar um arquivo que realiza a instalação
        17_OWNER_MONITORADO.sql
        18_SHELL_EXECUTAR_TKPROF_TRACE.sql
 
-
        --
-       -- Criação Views - Crie todas as  Views usando o SqlDeveloper porque o SqlPlus pode não reconhecer o comando WITH
+       -- View Creation - Create all the Views using SQLDeveloper because SQLPlus may not recognize the WITH command
 
        1_VW_CAPSULA_FILHA.sql
        2_VW_HIERARQUIA_TESTE.sql
        3_VW_LISTA_TESTES_INVALIDOS.sql
 
-
        --
-       -- Criação functions
+       -- Function Creation
 
        1_GERAR_HASH.sql
 
-
        --
-       -- Criação Packages
+       -- Package Creation
        1_CONSTANTES.sql
        2_LOG_GERENCIADOR.sql
 
-
        --
-       -- Criação functions
+       -- Function Creation
 
        2_GERAR_NOME_TRACE.sql
        3_VALIDA_OBJETO_TESTE.sql
        4_GERAR_CODIGO.sql
 
-
        --
-       -- Criação Packages
+       -- Package Creation
        3_MONITORAR_NOVO_OWNER.sql
        4_EXTRAI_METADADOS_TESTE.sql
        5_MANUTENCAO_ALVO.sql
 
-
        --
-       -- Criação Packages - As packages vão compilar com erro por causa da dependência entre elas, depois execute o comando para Compilar cada uma
+       -- Package Creation - The packages will compile with errors due to dependencies between them. Then execute the command to Compile each one.
        --
-       -- ATENÇÃO....
+       -- WARNING....
        --
-       -- As Package MANUTENCAO_ANTES_DEPOIS e CAPSULA_FILHA vão compilar com erro
-       -- por causa da dependência entre elas com a Package MANUTENCAO_TESTE
-       -- decorrente do processo de recursividade existente na arquitetura de desenvolvimento do TDD.
-       -- Após o criação execute o comando listado em seguida para Compilar cada package.
+       -- The MANUTENCAO_ANTES_DEPOIS and CAPSULA_FILHA packages will compile with errors
+       -- due to their dependency on the MANUTENCAO_TESTE package,
+       -- as a result of the recursion process in the TDD development architecture.
+       -- After creation, execute the command listed below to Compile each package.
        --
-
 
        6_MANUTENCAO_ANTES_DEPOIS.sql
        7_CAPSULA_FILHA.sql
@@ -304,9 +294,8 @@ Na versão Automática, você vai utilizar um arquivo que realiza a instalação
        ALTER PACKAGE MANUTENCAO_TESTE COMPILE;
        ALTER PACKAGE MANUTENCAO_TESTE COMPILE BODY;
 
-
        --
-       -- Criação Packages
+       -- Package Creation
 
        9_IDENTIFICAR_TESTES_TDD.sql
        10_HIERARQUIA_TESTE.sql
@@ -319,18 +308,16 @@ Na versão Automática, você vai utilizar um arquivo que realiza a instalação
        17_GERENCIAR_TRACE.sql
        18_REGISTRA_EXECUCAO_TESTE.sql
 
-
        --
-       -- Criação Jobs
+       -- Job Creation
 
        1_EXECUTAR_TESTES_AUTOMATIZADOS.sql
        2_JOB_EXPORTADOR_TRACE.sql
        3_JOB_MONITORAR_NOVOS_TESTES.sql
        4_JOB_VALIDAR_CAPSULAS.sql
 
-
        --
-       -- Criação Triggers
+       -- Trigger Creation
 
        1_TRG_GERENCIA_TDD_CAPSULA_FILHA.sql
        2_TRG_GERENCIA_TDD_CAPSULA_PAI.sql
@@ -338,106 +325,106 @@ Na versão Automática, você vai utilizar um arquivo que realiza a instalação
        4_TRG_MONITORA_DDL_DISPARO_TDD.sql
    ```
 
-## Instalação Finalizada
+## Installation Completed
 
-Após realizar a execução Manual ou Automática do scripts, o processo de instalação está finalizado.
+After performing the manual or automatic execution of the scripts, the installation process is complete.
 
-Agora vamos iniciar a criação dos testes.
+Now, let's begin creating tests.
 
-## Como criar um TESTE
+## How to Create a Test
 
-Todos os TESTES devem ser criados dentro do owner **WDS_PLSQL_TDD_TESTE**
+All tests must be created within the **WDS_PLSQL_TDD_TESTE** owner.
 
-A criação de um teste é muito simples.
+Creating a test is straightforward.
 
-O Teste só pode ser criado utilizando o objeto do tipo FUNCTION.
+A test can only be created using an object of the FUNCTION type.
 
-A Function referente ao Teste deve retornar um valor do Tipo BOOLEAN.
+The Function associated with the test should return a BOOLEAN value.
 
-No processo de criação do Teste informe os dados do Teste no bloco de comentário do tipo /\* \*/ no corpo da function.
+During the test creation process, provide the test data in a comment block within the function's body (/* */).
 
-Você pode criar um TESTE antes de criar o objeto a ser testado. A Function do Teste vai ficar inválida por causa da dependência com o objeto a ser testado, mas assim que o Objeto for criado o teste se torna válido.
+You can create a test before the object to be tested. The test function will become invalid due to its dependency on the object to be tested, but once the object is created, the test becomes valid.
 
-Todos os Testes são executados sempre que algum Objeto dos Owners monitorados sofrerem DDL.
+All tests are executed whenever there is a DDL (Data Definition Language) change to an object of the monitored owners.
 
-**PARÂMETROS QUE PODEM SER UTILIZADOS**
+**PARAMETERS THAT CAN BE USED**
 
-Existe uma lista de parâmetros em formato JSON que devem ser definidos para a criação de um Teste.
+There is a list of parameters in JSON format that must be defined for creating a test.
 
-Segue a lista de Parâmetros:
+Here is the list of parameters:
 
 ```sql
    /*
-   {NOME:Nome Único do Teste}
-   {INFO:Informações sobre o processo que está sendo testado}
-   {ALVO_OWNER: Owner do ALVO que está sendo Testado}
-   {ALVO_OBJECT: Owner objeto do ALVO que está sendo Testado}
-   {QUERY_ARGUMENTO:SELECT VALOR_A, VALOR_B FROM WDS_TDD_TESTE.TESTES_CALCULADORA}
-   {ANTES:TESTE_01, TESTE_02, TESTE_03}
-   {DEPOIS:TESTE_21, TESTE_22, TESTE_23}
+   {NOME: Unique Test Name}
+   {INFO: Information about the process being tested}
+   {ALVO_OWNER: Owner of the TARGET being Tested}
+   {ALVO_OBJECT: Owner of the object being Tested}
+   {QUERY_ARGUMENTO: SELECT VALUE_A, VALUE_B FROM WDS_TDD_TEST.TEST_CALCULATOR}
+   {ANTES: TEST_01, TEST_02, TEST_03}
+   {DEPOIS: TEST_21, TEST_22, TEST_23}
    {TESTE_AUXILIAR}
    {TESTE_DESATIVADO}
    */
 ```
 
-1. As informações mínimas de criação de um teste são: NOME | INFO | ALVO_OWNER | ALVO_OBJECT
+1. The minimum information required to create a test includes: NAME | INFO | ALVO_OWNER | ALVO_OBJECT.
 
-2. Com apenas 4 parâmetros você já defini que aquela Function é um objeto de Teste válido.
+2. With just these 4 parameters, you define that the function is a valid test object.
 
-3. Após isso não é necessário mais nenhuma intervenção ou configuração.
+3. After that, no further intervention or configuration is necessary.
 
-4. Acompanhe as execuções do Teste sempre que algum ALVO_OWNER sofrer um DDL.
+4. Monitor test executions whenever a TARGET_OWNER undergoes a DDL change.
 
-5. Todos os TESTES ativos são executados em conjunto.
+5. All active tests are executed together.
 
-Os parâmetros de uso obrigatório são:
+The mandatory parameters for use are:
 
 ```sql
    /*
-   {NOME:Nome Único do Teste}
-   {INFO:Informações sobre o processo que está sendo testado}
-   {ALVO_OWNER: Owner do ALVO que está sendo Testado}
-   {ALVO_OBJECT: Owner objeto do ALVO que está sendo Testado}
+   {NOME: Unique Test Name}
+   {INFO: Information about the process being tested}
+   {ALVO_OWNER: Owner of the TARGET being Tested}
+   {ALVO_OBJECT: Owner of the object being Tested}
    */
 ```
 
-Segue a descrição de cada parâmetro:
+Here is a description of each parameter:
 
-**NOME** – Pode ser um nome descritivo, mas deve ser um nome único.
+**NAME** – Can be a descriptive name but must be unique.
 
-**INFO** – Adicione anotações referentes ao teste e a expectativa do teste, essas informações facilitam para outros Dev.
+**INFO** – Add notes related to the test and the test's expectation. These notes make it easier for other developers.
 
-**ALVO_OWNER** – Nome do DONO do objeto ou da ação que será executada.
+**ALVO_OWNER** – Name of the OWNER of the object or action to be executed.
 
-**ALVO_OBJECT** – Nome do Objeto que será analisado. Esse não precisa estar vinculado a um objeto existente.
+**ALVO_OBJECT** – Name of the object to be analyzed. This does not need to be linked to an existing object.
 
-**QUERY_ARGUMENTO** – Permite realizar um conjunto de testes cada um com sua própria métrica. A Function de teste deve possuir a mesma quantidade de Parâmetros de acordo com a quantidade de colunas presentes na Query. Não utilizar queries do tipo JOIN ou que acessem mais de uma tabela.
+**QUERY_ARGUMENTO** – Allows multiple tests, each with its own metric. The test function must have the same number of parameters as the number of columns in the query. Do not use JOIN queries or queries that access more than one table.
 
-**ANTES** – Lista de TESTES que devem ser executados ANTES do TESTE principal.
+**ANTES** – List of TESTS that should be executed BEFORE the main TEST.
 
-**DEPOIS** – Lista de TESTES que devem ser executados DEPOIS do TESTE principal.
+**DEPOIS** – List of TESTS that should be executed AFTER the main TEST.
 
-**TESTE_AUXILIAR** – Todo TESTE criado é considerado como teste principal, mas, um TESTE pode ser configurado para ser apenas como um AUXILIAR, desta forma ele só será executado quando declarado como ANTES ou DEPOIS.
+**TESTE_AUXILIAR** – Every test created is considered the main test, but a test can be configured to be only an AUXILIARY test. In this case, it will only be executed when declared as ANTES or DEPOIS.
 
-**TESTE_DESATIVADO** – Se você deseja desativar um TESTE é só adicionar este parâmetro que o TESTE será desativado.
+**TESTE_DESATIVADO** – If you want to deactivate a test, just add this parameter, and the test will be deactivated.
 
-## ALVO - Exemplo de alvo que vamos usar no nosso teste
+## TARGET - Example of a target we will use in our test
 
-O foco do TESTE é apontar para um ALVO específico sobre um objeto existente dentro do banco de dados.
+The focus of the TEST is to point to a specific TARGET on an existing object within the database.
 
-Esse Objeto pode ser de qualquer tipo, pois, a validação da correta execução deste objeto ALVO é definido no TESTE que você criar.
+This Object can be of any type because the validation of the correct execution of this TARGET object is defined in the TEST you create.
 
-Vamos criar um exemplo de ALVO que vamos utilizar para realizar o teste.
+Let's create an example of a TARGET that we will use for the test.
 
-Nosso ALVO é um objeto que realiza a SOMA de dois valores.
+Our TARGET is an object that performs the SUM of two values.
 
 ```sql
-   -- User: CALCULADORA
+   -- User: CALCULATOR
    --
-   -- Object: ALVO
+   -- Object: TARGET
    --
 
-   CREATE OR REPLACE FUNCTION SOMA(A NUMBER, B NUMBER) RETURN NUMBER AS
+   CREATE OR REPLACE FUNCTION ADD(A NUMBER, B NUMBER) RETURN NUMBER AS
 
       RESULT NUMBER;
 
@@ -447,132 +434,133 @@ Nosso ALVO é um objeto que realiza a SOMA de dois valores.
 
       RETURN RESULT;
 
-   END SOMA;
+   END ADD;
    /
 ```
 
-**Exemplo - TESTE SIMPLES**
+**Example - SIMPLE TEST**
 
 ```sql
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Criação da Function de TESTE antes de criar o Objeto que será testado.
+   -- Creation of the TEST Function before creating the Object to be tested.
    --
 
-   CREATE OR REPLACE FUNCTION CALCULADORA_SOMA RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION CALCULATOR_ADDITION RETURN BOOLEAN IS
    /*
-   {NOME:Calculadora Teste Soma}
-   {INFO:Realiza testes matemáticos da operação SOMA }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:SOMA}
+   {NOME:Calculator Addition Test}
+   {INFO:Performs mathematical tests of the ADD operation}
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:ADD}
    */
    BEGIN
 
-      RETURN CALCULADORA.SOMA( 2, 3 ) = 5;
+      RETURN CALCULATOR.ADD( 2, 3 ) = 5;
 
    END;
    /
 ```
 
-**Exemplo - TESTE COM USO DE PARÂMETROS**
+**Example - TEST WITH PARAMETERS**
 
 ```sql
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Tabela para armazenar os valores de teste
+   -- Table to store test values
    --
-   CREATE TABLE TESTES_CALCULADORA (
-      VALOR_A NUMBER NOT NULL,
-      VALOR_B NUMBER NOT NULL
+   CREATE TABLE TEST_CALCULATOR (
+      VALUE_A NUMBER NOT NULL,
+      VALUE_B NUMBER NOT NULL
    );
 
 
    --
-   -- Registrando os valores a serem testados
+   -- Registering the values to be tested
    --
 
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 1 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 2 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 3 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 4 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 5 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 6 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 7 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 8 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 9 );
-   INSERT INTO TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( 2, 10 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 1 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 2 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 3 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 4 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 5 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 6 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 7 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 8 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 9 );
+   INSERT INTO TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( 2, 10 );
 
    COMMIT;
 
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Criação da Function de TESTE antes de criar o Objeto que será testado.
+   -- Creation of the TEST Function before creating the Object to be tested.
    --
 
 
-   CREATE OR REPLACE FUNCTION CALCULADORA_SOMA( p_VALOR_A IN NUMBER, p_VALOR_B IN NUMBER ) RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION CALCULATOR_ADDITION( p_VALUE_A IN NUMBER, p_VALUE_B IN NUMBER ) RETURN BOOLEAN IS
    /*
-   {NOME:Calculadora Teste Soma}
-   {INFO:Realiza testes matemáticos da operação SOMA }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:SOMA}
-   {QUERY_ARGUMENTO:SELECT VALOR_A, VALOR_B FROM WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA}
+   {NOME:Calculator Addition Test}
+   {INFO:Performs mathematical tests of the ADD operation}
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:ADD}
+   {QUERY_ARGUMENTO:SELECT VALUE_A, VALUE_B FROM WDS_PLSQL_TDD_TEST.TEST_CALCULATOR}
    */
    BEGIN
 
-      RETURN CALCULADORA.SOMA( p_VALOR_A, p_VALOR_B ) = ( p_VALOR_A + p_VALOR_B );
+      RETURN CALCULATOR.ADD( p_VALUE_A, p_VALUE_B ) = ( p_VALUE_A + p_VALUE_B );
 
    END;
    /
 ```
 
-**Exemplo - TESTE QUE REALIZA AÇÕES ANTES DO TESTE PRINCIPAL**
+
+**Example - TEST THAT PERFORMS ACTIONS BEFORE THE MAIN TEST**
 
 ```sql
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Tabela para armazenar os valores de teste
+   -- Table to store test values
    --
-   CREATE TABLE TESTES_CALCULADORA (
-      VALOR_A NUMBER NOT NULL,
-      VALOR_B NUMBER NOT NULL
+   CREATE TABLE TEST_CALCULATOR (
+      VALUE_A NUMBER NOT NULL,
+      VALUE_B NUMBER NOT NULL
    );
 
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Realizando uma ação antes de executar o TESTE Real.
-   -- Essa Function TESTE cria valore dinâmicos para o TESTE.
+   -- Performing an action before executing the Real TEST.
+   -- This TEST Function creates dynamic values for the TEST.
    --
-   CREATE OR REPLACE FUNCTION GERAR_VALORES_TESTE_CALCULADORA RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION GENERATE_TEST_VALUES_CALCULATOR RETURN BOOLEAN IS
    /*
-   {NOME:Gera valores para teste Calculadora}
-   {INFO:Cria os valores que aleatórios que serão usados nos calculos matemáticos dos testes }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:CALCULAR}
-   {TESTE_AUXILIAR}
+   {NOME:Generate values for Calculator test}
+   {INFO:Creates random values that will be used in mathematical calculations of the tests }
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:CALCULATE}
+   {TEST_AUXILIAR}
    */
 
       v_NUM_A NUMBER;
       v_NUM_B NUMBER;
-      v_RESULTADO NUMBER;
+      v_RESULT NUMBER;
    BEGIN
 
       FOR i IN 1..10 LOOP
          v_NUM_A := TRUNC( DBMS_RANDOM.VALUE(1, 100) );
          v_NUM_B := TRUNC( DBMS_RANDOM.VALUE(1, 100) );
 
-         INSERT INTO WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( v_NUM_A, v_NUM_B );
+         INSERT INTO WDS_PLSQL_TDD_TEST.TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( v_NUM_A, v_NUM_B );
       END LOOP;
 
-      v_RESULTADO := SQL%ROWCOUNT;
+      v_RESULT := SQL%ROWCOUNT;
 
       COMMIT;
 
-      RETURN ( v_RESULTADO > 0 );
+      RETURN ( v_RESULT > 0 );
    END;
    /
 
@@ -580,158 +568,159 @@ Nosso ALVO é um objeto que realiza a SOMA de dois valores.
 
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Criação da Function de TESTE antes de criar o Objeto que será testado.
+   -- Creation of the TEST Function before creating the Object to be tested.
    --
 
-   CREATE OR REPLACE FUNCTION CALCULADORA_SOMA( p_VALOR_A IN NUMBER, p_VALOR_B IN NUMBER ) RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION CALCULATOR_ADDITION( p_VALUE_A IN NUMBER, p_VALUE_B IN NUMBER ) RETURN BOOLEAN IS
    /*
-   {NOME:Calculadora Teste Soma}
-   {INFO:Realiza testes matemáticos da operação SOMA }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:SOMA}
-   {QUERY_ARGUMENTO:SELECT VALOR_A, VALOR_B FROM WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA}
-   {ANTES:GERAR_VALORES_TESTE_CALCULADORA}
+   {NOME:Calculator Addition Test}
+   {INFO:Performs mathematical tests of the ADD operation}
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:ADD}
+   {QUERY_ARGUMENTO:SELECT VALUE_A, VALUE_B FROM WDS_PLSQL_TDD_TEST.TEST_CALCULATOR}
+   {ANTES:GENERATE_TEST_VALUES_CALCULATOR}
    */
 
-      v_LOG_REGISTRADO NUMBER;
+      v_LOG_REGISTERED NUMBER;
 
    BEGIN
 
-      RETURN CALCULADORA.SOMA( p_VALOR_A, p_VALOR_B ) = ( p_VALOR_A + p_VALOR_B );
+      RETURN CALCULATOR.ADD( p_VALUE_A, p_VALUE_B ) = ( p_VALUE_A + p_VALUE_B );
 
    END;
    /
 ```
 
-**Exemplo - TESTE QUE REALIZA AÇÕES ANTES E DEPOIS DO TESTE PRINCIPAL**
+
+**Example - TEST THAT PERFORMS ACTIONS BEFORE AND AFTER THE MAIN TEST**
 
 ```sql
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Tabela para armazenar os valores de teste
+   -- Table to store test values
    --
-   CREATE TABLE TESTES_CALCULADORA (
-      VALOR_A NUMBER NOT NULL,
-      VALOR_B NUMBER NOT NULL
+   CREATE TABLE TEST_CALCULATOR (
+      VALUE_A NUMBER NOT NULL,
+      VALUE_B NUMBER NOT NULL
    );
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Realizando uma ação antes de executar o TESTE Real.
-   -- Essa Function TESTE cria valore dinâmicos para o TESTE.
+   -- Performing an action before executing the Real TEST.
+   -- This TEST Function creates dynamic values for the TEST.
    --
-   CREATE OR REPLACE FUNCTION GERAR_VALORES_TESTE_CALCULADORA RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION GENERATE_TEST_VALUES_CALCULATOR RETURN BOOLEAN IS
    /*
-   {NOME:Gera valores para teste Calculadora}
-   {INFO:Cria os valores que aleatórios que serão usados nos calculos matemáticos dos testes }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:CALCULAR}
-   {TESTE_AUXILIAR}
+   {NOME:Generate values for Calculator test}
+   {INFO:Creates random values that will be used in mathematical calculations of the tests }
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:CALCULATE}
+   {TEST_AUXILIAR}
    */
 
       v_NUM_A NUMBER;
       v_NUM_B NUMBER;
-      v_RESULTADO NUMBER;
+      v_RESULT NUMBER;
    BEGIN
 
       FOR i IN 1..10 LOOP
          v_NUM_A := TRUNC( DBMS_RANDOM.VALUE(1, 100) );
          v_NUM_B := TRUNC( DBMS_RANDOM.VALUE(1, 100) );
 
-         INSERT INTO WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA ( VALOR_A, VALOR_B ) VALUES ( v_NUM_A, v_NUM_B );
+         INSERT INTO WDS_PLSQL_TDD_TEST.TEST_CALCULATOR ( VALUE_A, VALUE_B ) VALUES ( v_NUM_A, v_NUM_B );
       END LOOP;
 
-      v_RESULTADO := SQL%ROWCOUNT;
+      v_RESULT := SQL%ROWCOUNT;
 
       COMMIT;
 
-      RETURN ( v_RESULTADO > 0 );
+      RETURN ( v_RESULT > 0 );
    END;
    /
 
 
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Realizando uma ação depois de executar o TESTE Real.
-   -- Essa Function TESTE realiza o Rollback dos valores testados.
+   -- Performing an action after executing the Real TEST.
+   -- This TEST Function rolls back the tested values.
    --
-   CREATE OR REPLACE FUNCTION ROLLBACK_VALORES_TESTE_CALCULADORA RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION ROLLBACK_TEST_VALUES_CALCULATOR RETURN BOOLEAN IS
    /*
-   {NOME:Deleta valores do teste da calculadora}
-   {INFO:Apaga os valores que foram gerados para os testes matemáticos a serem realizados }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:SOMA}
-   {TESTE_AUXILIAR}
+   {NOME:Delete calculator test values}
+   {INFO:Deletes the values generated for the mathematical tests to be performed }
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:SUM}
+   {TEST_AUXILIAR}
    */
-      v_RESULTADO NUMBER;
+      v_RESULT NUMBER;
 
    BEGIN
 
-      DELETE FROM WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA;
+      DELETE FROM WDS_PLSQL_TDD_TEST.TEST_CALCULATOR;
 
-      v_RESULTADO := SQL%ROWCOUNT;
+      v_RESULT := SQL%ROWCOUNT;
 
       COMMIT;
 
-      RETURN ( v_RESULTADO > 0 );
+      RETURN ( v_RESULT > 0 );
 
    END;
    /
 
 
-   -- User: WDS_PLSQL_TDD_TESTE
+   -- User: WDS_PLSQL_TDD_TEST
    --
-   -- Criação da Function de TESTE antes de criar o Objeto que será testado.
+   -- Creating the TEST Function before creating the Object to be tested.
    --
 
-   CREATE OR REPLACE FUNCTION CALCULADORA_SOMA( p_VALOR_A IN NUMBER, p_VALOR_B IN NUMBER ) RETURN BOOLEAN IS
+   CREATE OR REPLACE FUNCTION CALCULATOR_SUM( p_VALUE_A IN NUMBER, p_VALUE_B IN NUMBER ) RETURN BOOLEAN IS
    /*
-   {NOME:Calculadora Teste Soma}
-   {INFO:Realiza testes matemáticos da operação SOMA }
-   {ALVO_OWNER:CALCULADORA}
-   {ALVO_OBJECT:SOMA}
-   {QUERY_ARGUMENTO:SELECT VALOR_A, VALOR_B FROM WDS_PLSQL_TDD_TESTE.TESTES_CALCULADORA}
-   {ANTES:GERAR_VALORES_TESTE_CALCULADORA}
-   {DEPOIS:ROLLBACK_VALORES_TESTE_CALCULADORA}
+   {NOME:Calculator Sum Test}
+   {INFO:Performs mathematical tests for the SUM operation }
+   {ALVO_OWNER:CALCULATOR}
+   {ALVO_OBJECT:SUM}
+   {QUERY_ARGUMENT:SELECT VALUE_A, VALUE_B FROM WDS_PLSQL_TDD_TEST.TEST_CALCULATOR}
+   {ANTES:GENERATE_TEST_VALUES_CALCULATOR}
+   {DEPOIS:ROLLBACK_TEST_VALUES_CALCULATOR}
    */
 
-      v_LOG_REGISTRADO NUMBER;
+      v_LOG_REGISTERED NUMBER;
 
    BEGIN
 
-      RETURN CALCULADORA.SOMA( p_VALOR_A, p_VALOR_B ) = ( p_VALOR_A + p_VALOR_B );
+      RETURN CALCULATOR.SUM( p_VALUE_A, p_VALUE_B ) = ( p_VALUE_A + p_VALUE_B );
 
    END;
    /
 ```
 
-**Como Ativar / Desativar o TRACE sobre um TESTE**
+**How to Enable/Disable TRACE on a TEST**
 
-Para realizar a ativação da coleta do TRACE é simples, você precisar realizar a chamada de uma Function que pertence ao Owner WDS_PLSQL_TDD passando como parâmetro o ID do Teste.
+To enable the collection of TRACE data, you need to call a Function belonging to the WDS_PLSQL_TDD Owner and pass the TEST_ID as a parameter.
 
 ```sql
 
-   -- Ativando a coleta de TRACE
-   SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.ATIVAR_TRACE( TESTE_ID ) FROM DUAL;
+   -- Enabling TRACE collection
+   SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.ATIVAR_TRACE( TEST_ID ) FROM DUAL;
 
 
-   -- Desativando a coleta de TRACE
-   SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.DESATIVAR_TRACE( TESTE_ID ) FROM DUAL;
+   -- Disabling TRACE collection
+   SELECT WDS_PLSQL_TDD.MANUTENCAO_TESTE.DESATIVAR_TRACE( TEST_ID ) FROM DUAL;
 
 ```
 
-## Exemplos de Testes - Vídeo
+## Test Examples - Video
 
-[![wdsPLSQLtdd - Exemplos de Testes](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "wdsPLSQLtdd - Exemplos de Testes")
+[![wdsPLSQLtdd - Test Examples](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "wdsPLSQLtdd - Test Examples")
 
-## Contribuições Financeiras (Opcional)
+## Financial Contributions (Optional)
 
-Se você achou este Framework útil e deseja apoiar seu desenvolvimento contínuo, você pode fazer uma contribuição financeira. Suas contribuições são bem-vindas e ajudam a manter este projeto ativo.
+If you found this framework useful and would like to support its ongoing development, you can make a financial contribution. Your contributions are welcome and help keep this project active.
 
 **Crypto**
 
@@ -741,21 +730,20 @@ Ethereum - BNB - MATIC >> 0x74d6b623e488e76ea522915edf2c9bcaeebff190
 
 **Pix**
 
-Chave >> 7b9c9a6a-a4be-4caa-bcf3-2c760aac9d94
+Key >> 7b9c9a6a-a4be-4caa-bcf3-2c760aac9d94
 
 Banco Inter - Wesley David Santos
 
-Lembre-se de que as contribuições financeiras são completamente opcionais e não são de forma alguma um requisito para o uso ou o suporte deste projeto. Qualquer ajuda, seja através de código, relatórios de problemas, ou simplesmente compartilhando sua experiência, é altamente valorizada.
+Please remember that financial contributions are entirely optional and by no means a requirement for using or supporting this project. Any assistance, whether through code, issue reports, or simply sharing your experience, is highly appreciated.
 
-Obrigado por fazer parte da comunidade PL/SQL e por considerar apoiar este projeto!
+Thank you for being part of the PL/SQL community and for considering supporting this project!
 
-## Licença
+## License
 
-Este projeto é licenciado sob a Apache License 2.0.
+This project is licensed under the Apache License 2.0.
 
-**Cláusula de Uso Comercial:**
+**Commercial Use Clause:**
 
-1. Para qualquer uso deste software em um contexto comercial, incluindo, mas não se limitando a, incorporação deste software em produtos comerciais ou serviços oferecidos por empresas, a entidade comercial deve entrar em um acordo de licença comercial com Wesley David Santos por email ( wdsplsqltdd@gmail.com / wesleydavidsantos@gmail.com ) e pagar as taxas de licenciamento aplicáveis.
+1. For any use of this software in a commercial context, including but not limited to incorporating this software into commercial products or services offered by companies, the commercial entity must enter into a commercial license agreement with Wesley David Santos via email (wdsplsqltdd@gmail.com / wesleydavidsantos@gmail.com) and pay the applicable licensing fees.
 
-2. O uso não comercial deste software, incluindo seu uso em projetos de código aberto, é isento desta cláusula e pode ser realizado de acordo com os termos da Licença Apache 2.0.
-
+2. Non-commercial use of this software, including its use in open-source projects, is exempt from this clause and may be carried out in accordance with the terms of the Apache 2.0 License.
