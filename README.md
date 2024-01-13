@@ -1,28 +1,28 @@
-# wdsPLSQLtdd - Automated Unit Testing in PL/SQL (TDD)
+# ProTestOracle - Automated unit and integration testing in PL/SQL (TDD)
 
 
-**Readme** - Versão em Português: https://github.com/wdsPLSQLtdd/wdsPLSQLtdd/blob/main/README_ptBR.md
+**Readme** - Versão em Português: https://github.com/ProTestOracle/ProTestOracle/blob/main/README_ptBR.md
 
 
 **BUILT IN PL/SQL FOR PL/SQL**
 
-wdsPLSQLtdd is an automated testing system developed in PL/SQL, designed to simplify and expedite the process of creating unit tests in the PL/SQL language.
+ProTestOracle is an automated testing system developed in PL/SQL, designed to simplify and expedite the process of creating unit tests in the PL/SQL language.
 
 Oracle Database is the undisputed leader in technology and market share in Brazil and around the world.
 
 However, most robust testing systems available for the PL/SQL language were not originally developed in PL/SQL. These systems belong to other languages and were adapted to the PL/SQL language rather than being exclusively dedicated to it.
 
-There is a significant difference between an adapted system and a dedicated one, and wdsPLSQLtdd is dedicated to the PL/SQL language.
+There is a significant difference between an adapted system and a dedicated one, and ProTestOracle is dedicated to the PL/SQL language.
 
-Unlike other solutions that involve the use of additional programming languages, such as jUnit which uses Java, wdsPLSQLtdd allows PL/SQL developers to create tests directly, eliminating the need to learn a new language and significantly reducing the learning curve.
+Unlike other solutions that involve the use of additional programming languages, such as jUnit which uses Java, ProTestOracle allows PL/SQL developers to create tests directly, eliminating the need to learn a new language and significantly reducing the learning curve.
 
 ## Video tutorial
 
-[![wdsPLSQLtdd - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "wdsPLSQLtdd - Tutorial")
+[![ProTestOracle - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "ProTestOracle - Tutorial")
 
 ## Problem to Be Solved
 
-Often, PL/SQL developers and teams encounter the need to create unit tests for their Procedures, Functions, and Packages. However, most available solutions involve the use of additional programming languages, which can be complex and time-consuming. wdsPLSQLtdd aims to address this issue by allowing tests to be written directly in PL/SQL, simplifying and streamlining the process.
+Often, PL/SQL developers and teams encounter the need to create unit tests for their Procedures, Functions, and Packages. However, most available solutions involve the use of additional programming languages, which can be complex and time-consuming. ProTestOracle aims to address this issue by allowing tests to be written directly in PL/SQL, simplifying and streamlining the process.
 
 ## Key Development Environment Features
 
@@ -41,13 +41,13 @@ Often, PL/SQL developers and teams encounter the need to create unit tests for t
 - Monitor and test new update script applications in production environments.
 - Use the system for debugging and identifying records that are encountering errors in a production environment.
 
-Here are the steps to get started using wdsPLSQLtdd in your project:
+Here are the steps to get started using ProTestOracle in your project:
 
 ## Installation - User Creation
 
-1. Download the wdsPLSQLtdd system scripts.
+1. Download the ProTestOracle system scripts.
 
-2. To install and use the wdsPLSQLtdd system, you need to create two users.
+2. To install and use the ProTestOracle system, you need to create two users.
 
    **CREATING THE MAIN MANAGEMENT USER**
 
@@ -165,7 +165,7 @@ Note: Currently, TRACE collection is only performed on LINUX environments.
 
 ## Installation - Creating TDD System Objects
 
-Note: The wdsPLSQLtdd system was developed using the "Oracle Database 19c Release 19.0.0.0.0" version. If you encounter any issues with earlier versions, please contact us.
+Note: The ProTestOracle system was developed using the "Oracle Database 19c Release 19.0.0.0.0" version. If you encounter any issues with earlier versions, please contact us.
 
 You can perform either a Manual or Automatic installation.
 
@@ -720,7 +720,7 @@ To enable the collection of TRACE data, you need to call a Function belonging to
 
 ## Test Examples - Video
 
-[![wdsPLSQLtdd - Test Examples](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "wdsPLSQLtdd - Test Examples")
+[![ProTestOracle - Test Examples](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "ProTestOracle - Test Examples")
 
 ## Financial Contributions (Optional)
 
@@ -748,6 +748,6 @@ This project is licensed under the Apache License 2.0.
 
 **Commercial Use Clause:**
 
-1. For any use of this software in a commercial context, including but not limited to incorporating this software into commercial products or services offered by companies, the commercial entity must enter into a commercial license agreement with Wesley David Santos via email (wdsplsqltdd@gmail.com / wesleydavidsantos@gmail.com) and pay the applicable licensing fees.
+1. For any use of this software in a commercial context, including but not limited to incorporating this software into commercial products or services offered by companies, the commercial entity must enter into a commercial license agreement with Wesley David Santos via email (ProTestOracle@gmail.com / wesleydavidsantos@gmail.com) and pay the applicable licensing fees.
 
 2. Non-commercial use of this software, including its use in open-source projects, is exempt from this clause and may be carried out in accordance with the terms of the Apache 2.0 License.
