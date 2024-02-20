@@ -1,24 +1,24 @@
-# ProTestOracle - Teste de unidade e de integração automatizados em PL/SQL (TDD)
+# ProTddOracle - Teste de unidade e de integração automatizados em PL/SQL (TDD)
 
 **FEITO EM PL/SQL PARA PL/SQL**
 
-O ProTestOracle é um sistema de testes automatizados desenvolvido em PL/SQL, projetado para simplificar e acelerar o processo de criação de testes de unidade em linguagem PL/SQL.
+O ProTddOracle é um sistema de testes automatizados desenvolvido em PL/SQL, projetado para simplificar e acelerar o processo de criação de testes de unidade em linguagem PL/SQL.
 
 O Banco de Dados Oracle é o líder absoluto em Tecnologia e de Mercado no Brasil e no Mundo.
 
 No entanto, a maioria dos sistemas de teste robustos disponíveis para a linguagem PL/SQL não foram originalmente desenvolvidos em PL/SQL. Esses sistemas pertencem a outras linguagens e foram adaptados para a linguagem PL/SQL, em vez de serem dedicados exclusivamente a ela.
 
-Existe uma diferença significativa entre um sistema adaptado e um sistema dedicado e o ProTestOracle é dedicado a linguagem PL/SQL.
+Existe uma diferença significativa entre um sistema adaptado e um sistema dedicado e o ProTddOracle é dedicado a linguagem PL/SQL.
 
-Ao contrário de outras soluções que envolvem o uso de linguagens de programação adicionais, como o jUnit que utiliza o Java, o ProTestOracle permite que os desenvolvedores PL/SQL criem testes de forma direta, eliminando a necessidade de aprender uma nova linguagem e reduzindo significativamente a curva de aprendizado.
+Ao contrário de outras soluções que envolvem o uso de linguagens de programação adicionais, como o jUnit que utiliza o Java, o ProTddOracle permite que os desenvolvedores PL/SQL criem testes de forma direta, eliminando a necessidade de aprender uma nova linguagem e reduzindo significativamente a curva de aprendizado.
 
 ## Tutorial em Vídeo
 
-[![ProTestOracle - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "ProTestOracle - Tutorial")
+[![ProTddOracle - Tutorial](https://img.youtube.com/vi/02SgxiF0VIA/0.jpg)](https://www.youtube.com/watch?v=02SgxiF0VIA "ProTddOracle - Tutorial")
 
 ## Problema a Ser Resolvido
 
-Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade de criar testes de unidade para suas Procedures, Functions e Packages. No entanto, a maioria das soluções disponíveis envolve o uso de linguagens de programação adicionais, o que pode ser complexo e demorado. O ProTestOracle busca resolver esse problema, permitindo que os testes sejam escritos diretamente em PL/SQL, tornando o processo mais simples e eficiente.
+Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade de criar testes de unidade para suas Procedures, Functions e Packages. No entanto, a maioria das soluções disponíveis envolve o uso de linguagens de programação adicionais, o que pode ser complexo e demorado. O ProTddOracle busca resolver esse problema, permitindo que os testes sejam escritos diretamente em PL/SQL, tornando o processo mais simples e eficiente.
 
 ## Principais Recursos para Ambiente de Desenvolvimento
 
@@ -37,13 +37,13 @@ Muitas vezes, desenvolvedores e equipes de PL/SQL se deparam com a necessidade d
 - Monitore e teste novas aplicações de scripts de atualização em ambientes de produção.
 - Utilize o sistema para realizar debug e identificar registros que estão apresentando erro em ambiente de produção.
 
-Aqui estão os passos para começar a usar o ProTestOracle em seu projeto:
+Aqui estão os passos para começar a usar o ProTddOracle em seu projeto:
 
 ## Instalação - Criação dos Usuários
 
-1. Realize o Download contendo os Scripts do sistema ProTestOracle.
+1. Realize o Download contendo os Scripts do sistema ProTddOracle.
 
-2. Para instalação e uso do sistema ProTestOracle são necessários a criação de dois usuários.
+2. Para instalação e uso do sistema ProTddOracle são necessários a criação de dois usuários.
 
    **CRIANDO O USUÁRIO PRINCIPAL QUE REALIZA O GERENCIAMENTO**
 
@@ -162,7 +162,7 @@ Observação: Até o momento, a coleta de TRACE é realizada somente em ambiente
 
 ## Instalação - Criação dos objetos referentes ao sistema TDD
 
-Observação: O sistema ProTestOracle foi desenvolvido usando a versão "Oracle Database 19c Release 19.0.0.0.0", se você identificar algum problema referente a versões anteriores, favor entrar em contato.
+Observação: O sistema ProTddOracle foi desenvolvido usando a versão "Oracle Database 19c Release 19.0.0.0.0", se você identificar algum problema referente a versões anteriores, favor entrar em contato.
 
 Você pode realizar a instalação Manual ou Automática.
 
@@ -727,7 +727,7 @@ Para realizar a ativação da coleta do TRACE é simples, você precisar realiza
 
 ## Exemplos de Testes - Vídeo
 
-[![ProTestOracle - Exemplos de Testes](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "ProTestOracle - Exemplos de Testes")
+[![ProTddOracle - Exemplos de Testes](https://img.youtube.com/vi/Ozswl1GJFdE/0.jpg)](https://www.youtube.com/watch?v=Ozswl1GJFdE "ProTddOracle - Exemplos de Testes")
 
 ## Contribuições Financeiras (Opcional)
 
@@ -755,7 +755,7 @@ Este projeto é licenciado sob a Apache License 2.0.
 
 **Cláusula de Uso Comercial:**
 
-1. Para qualquer uso deste software em um contexto comercial, incluindo, mas não se limitando a, incorporação deste software em produtos comerciais ou serviços oferecidos por empresas, a entidade comercial deve entrar em um acordo de licença comercial com Wesley David Santos por email ( ProTestOracle@gmail.com / wesleydavidsantos@gmail.com ) e pagar as taxas de licenciamento aplicáveis.
+1. Para qualquer uso deste software em um contexto comercial, incluindo, mas não se limitando a, incorporação deste software em produtos comerciais ou serviços oferecidos por empresas, a entidade comercial deve entrar em um acordo de licença comercial com Wesley David Santos por email ( ProTddOracle@gmail.com / wesleydavidsantos@gmail.com ) e pagar as taxas de licenciamento aplicáveis.
 
 2. O uso não comercial deste software, incluindo seu uso em projetos de código aberto, é isento desta cláusula e pode ser realizado de acordo com os termos da Licença Apache 2.0.
 
