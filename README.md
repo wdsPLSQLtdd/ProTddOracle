@@ -1,7 +1,7 @@
 # ProTddOracle - Automated unit and integration testing in PL/SQL (TDD)
 
 
-**Readme** - Versão em Português: https://github.com/ProTddOracle/ProTddOracle/blob/main/README_ptBR.md
+**Readme** - [Versão em Português](https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/README_ptBR.md)
 
 
 **BUILT IN PL/SQL FOR PL/SQL**
