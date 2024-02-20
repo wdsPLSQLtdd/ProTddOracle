@@ -748,6 +748,6 @@ This project is licensed under the Apache License 2.0.
 
 **Commercial Use Clause:**
 
-1. For any use of this software in a commercial context, including but not limited to incorporating this software into commercial products or services offered by companies, the commercial entity must enter into a commercial license agreement with Wesley David Santos via email (ProTddOracle@gmail.com / wesleydavidsantos@gmail.com) and pay the applicable licensing fees.
+1. For any use of this software in a commercial context, including but not limited to incorporating this software into commercial products or services offered by companies, the commercial entity must enter into a commercial license agreement with Wesley David Santos via email (wdsPLSQLtdd@gmail.com / wesleydavidsantos@gmail.com) and pay the applicable licensing fees.
 
 2. Non-commercial use of this software, including its use in open-source projects, is exempt from this clause and may be carried out in accordance with the terms of the Apache 2.0 License.
