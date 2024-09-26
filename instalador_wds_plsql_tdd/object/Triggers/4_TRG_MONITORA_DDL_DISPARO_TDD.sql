@@ -57,39 +57,40 @@ BEGIN
 			SELECT SYS_CONTEXT('USERENV','IP_ADDRESS')  INTO V_IP_ADDRESS FROM DUAL;
 
 
+			IF V_SESSION_USER NOT IN ( 'WDS_PLSQL_TDD' ) THEN
 
+				INSERT INTO DISPARAR_TESTES_TDD 
+					(
+						 DATA_REGISTRO
+						,OWNER
+						,OBJECT_NAME
+						,OBJECT_TYPE
+						,EVENTO
+						,TERMINAL
+						,CURRENT_USER
+						,SESSION_USER
+						,HOST
+						,OS_USER
+						,EXTERNAL_NAME
+						,IP_ADDRESS
+					) 
+				VALUES
+					(
+						 SYSDATE
+						,v_OWNER
+						,v_OBJECT_NAME
+						,v_OBJECT_TYPE
+						,v_EVENTO
+						,v_TERMINAL
+						,v_CURRENT_USER
+						,v_SESSION_USER
+						,v_HOST
+						,v_OS_USER
+						,v_EXTERNAL_NAME
+						,v_IP_ADDRESS
+					);
 
-			INSERT INTO DISPARAR_TESTES_TDD 
-				(
-					 DATA_REGISTRO
-					,OWNER
-					,OBJECT_NAME
-					,OBJECT_TYPE
-					,EVENTO
-					,TERMINAL
-					,CURRENT_USER
-					,SESSION_USER
-					,HOST
-					,OS_USER
-					,EXTERNAL_NAME
-					,IP_ADDRESS
-				) 
-			VALUES
-				(
-					 SYSDATE
-					,v_OWNER
-					,v_OBJECT_NAME
-					,v_OBJECT_TYPE
-					,v_EVENTO
-					,v_TERMINAL
-					,v_CURRENT_USER
-					,v_SESSION_USER
-					,v_HOST
-					,v_OS_USER
-					,v_EXTERNAL_NAME
-					,v_IP_ADDRESS
-				);
-
+			END IF;
 		
 		END IF;
 			
