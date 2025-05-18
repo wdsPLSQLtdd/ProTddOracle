@@ -1,6 +1,21 @@
 # ProTddOracle - Automated unit and integration testing in PL/SQL (TDD)
 
 
+# Important
+
+> ⚠️ **Important Notice: This Repository Has Been Migrated!**  
+>
+> This project is no longer maintained here. It has been renamed and moved to a new repository:  
+> 👉 [https://github.com/wesleydavidsantos/xPLSQL](https://github.com/wesleydavidsantos/xPLSQL)  
+>
+> No further updates will be made to this repository.  
+> The new repository includes improvements, bug fixes, and new features under the name **xPL/SQL**.  
+>
+> Please update your bookmarks and switch to the new repository for the latest version and continued development.
+
+<img src="https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/repositorio_movido.png" alt="xPLSQL Moved" width="600"/>
+
+
 **Readme** - [Versão em Português](https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/README_ptBR.md)
 
 
