@@ -1,5 +1,21 @@
 # ProTddOracle - Teste de unidade e de integração automatizados em PL/SQL (TDD)
 
+# Importante
+
+> ⚠️ **Aviso Importante: Este Repositório Foi Migrado!**  
+>
+> Este projeto não é mais mantido aqui. Ele foi renomeado e movido para um novo repositório:  
+> 👉 [https://github.com/wesleydavidsantos/xPLSQL](https://github.com/wesleydavidsantos/xPLSQL)  
+>
+> Nenhuma atualização adicional será feita neste repositório.  
+> O novo repositório inclui melhorias, correções de bugs e novas funcionalidades com o nome **xPL/SQL**.  
+>
+> Atualize seus favoritos e utilize o novo repositório para acessar a versão mais recente e acompanhar o desenvolvimento contínuo.
+
+<img src="https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/repositorio_movido.png" alt="xPLSQL Moved" width="600"/>
+
+---
+
 **FEITO EM PL/SQL PARA PL/SQL**
 
 O ProTddOracle é um sistema de testes automatizados desenvolvido em PL/SQL, projetado para simplificar e acelerar o processo de criação de testes de unidade em linguagem PL/SQL.
