@@ -15,6 +15,7 @@
 
 <img src="https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/repositorio_movido.png" alt="xPLSQL Moved" width="600"/>
 
+---
 
 **Readme** - [Versão em Português](https://github.com/wdsPLSQLtdd/ProTddOracle/blob/main/README_ptBR.md)
 
